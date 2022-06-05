@@ -3,30 +3,30 @@ namespace Bank
 {
     public class Account : AccountService
     {
-        public int Balance { get; set; }
-        public TransactionRepository Transactions { get; set; }
+        public int balance { get; set; }
+        public TransactionRepository transactions { get; set; }
         public Account(int initialBalance, IDateTimeWrapper dateTimeWrapper)
         {
-            Balance = initialBalance;
-            Transactions = new TransactionRepository(dateTimeWrapper);
+            balance = initialBalance;
+            transactions = new TransactionRepository(dateTimeWrapper);
         }
 
         public void Deposit(int amount)
         {
-            Balance += amount;
-            Transactions.AddItem(amount, Balance);
+            balance += amount;
+            transactions.AddItem(amount, balance);
         }
 
         public void Withdraw(int amount)
         {
-            Balance -= amount;
-            Transactions.AddItem(-amount, Balance);
+            balance -= amount;
+            transactions.AddItem(-amount, balance);
 
         }
 
         public void printStatement()
         {
-            Console.WriteLine(string.Join(Environment.NewLine, Transactions.statement));
+            StatementPrinter.Print(transactions);
         }
     }
 }

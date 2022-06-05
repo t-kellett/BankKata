@@ -4,15 +4,15 @@
     {
         private const string HEADER = "Date || Amount || Balance";
         private readonly IDateTimeWrapper _dateTimeWrapper;
-        public IList<string> statement;
+        public IList<string> items;
         public TransactionRepository( IDateTimeWrapper dateTimeWrapper)
         {
-            statement = new List<string> { HEADER };
+            items = new List<string> { HEADER };
             _dateTimeWrapper = dateTimeWrapper;
         }
         public void AddItem(int amount, int balance)
         {
-            statement.Insert(1, $"{_dateTimeWrapper.Now.ToShortDateString()} || {amount} || {balance}");
+            items.Insert(1, $"{_dateTimeWrapper.Now.ToShortDateString()} || {amount} || {balance}");
         }
     }
 }

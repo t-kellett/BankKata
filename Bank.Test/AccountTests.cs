@@ -20,14 +20,14 @@ namespace Bank.Test
         public void ToDepositAmount()
         {
             account.Deposit(500);
-            Assert.AreEqual(1500, account.Balance);
+            Assert.AreEqual(1500, account.balance);
         }
 
         [Test]
         public void ToWithdrawAmount()
         {
             account.Withdraw(500);
-            Assert.AreEqual(500, account.Balance);
+            Assert.AreEqual(500, account.balance);
         }
 
         [Test]
@@ -35,7 +35,7 @@ namespace Bank.Test
         {
             account.Deposit(500);
             string lastTransaction = "05/06/2022 || 500 || 1500";
-            Assert.AreEqual(lastTransaction, account.Transactions.statement[1]);
+            Assert.AreEqual(lastTransaction, account.transactions.items[1]);
         }
 
         [Test]
@@ -43,7 +43,7 @@ namespace Bank.Test
         {
             account.Withdraw(500);
             string lastTransaction = "05/06/2022 || -500 || 500";
-            Assert.AreEqual(lastTransaction, account.Transactions.statement[1]);
+            Assert.AreEqual(lastTransaction, account.transactions.items[1]);
         }
     }
 }
